@@ -30,7 +30,7 @@ BLOCKS_ADMIN_PASSWORD = "Cl6789423150"
 [[d1_databases]]
 binding = "DB"
 database_name = "blocks"
-database_id = "a9e6f51d-1f2f-45cf-a9ba-3578c2d8c133"
+database_id = "926d19c27ffdddc48f7c0c98bcfee686"
 migrations_dir = "migrations"
 
 # R2 bucket configuration
