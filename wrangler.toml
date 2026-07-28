@@ -8,10 +8,13 @@ compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
 # 修改这里的路由配置
+# Public routes for this Worker.
+# 使用这种格式，不要加 custom_domain = true
 routes = [
-	{ pattern = "api.chenluo.cyou", custom_domain = true },
-	{ pattern = "tmdb.chenluo.cyou", custom_domain = true },
-	{ pattern = "chenluo.cyou/blocks*", zone_name = "chenluo.cyou" },
+	{ pattern = "api.chenluo.cyou/*", zone_name = "chenluo.cyou" },
+	{ pattern = "tmdb.chenluo.cyou/*", zone_name = "chenluo.cyou" },
+	{ pattern = "chenluo.cyou/blocks*", zone_name = "chenluo.cyou" }
+]
 ]
 
 [placement]
