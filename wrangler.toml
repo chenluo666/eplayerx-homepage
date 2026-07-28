@@ -25,6 +25,7 @@ enabled = true
 [vars]
 # 🔴 请将下方的 "你的密码填在这里" 替换为你实际想要的管理员密码
 BLOCKS_ADMIN_PASSWORD = "Cl6789423150"
+TMDB_API_TOKEN="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OGM3ZjM0NmFhN2IwM2EyMTM0MjVjMGJjNDQ4ZmFmYSIsIm5iZiI6MTczMjM0OTUyMS4xMjYwMDAyLCJzdWIiOiI2NzQxOGU1MTcwM2U4NTU4OWQxODgxOTciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.uMviRTPzh4Ov3vioXmW5SVJ9TjOprnpLqHWOFwn7cjo"
 
 # D1 database configuration
 [[d1_databases]]
