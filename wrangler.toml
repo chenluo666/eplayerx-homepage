@@ -6,8 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 # Keep the default *.workers.dev address alive.
 workers_dev = true
 
-[placement]
-mode = "smart"
+
 
 # 👇 【你的专属域名配置，已完美替换为 epx 前缀】
 routes = [
@@ -19,6 +18,8 @@ routes = [
  { pattern = "chenluo.bond/*", zone_name = "chenluo.bond" },
 ]
 
+[placement]
+mode = "smart"
 
 [observability]
 enabled = true
