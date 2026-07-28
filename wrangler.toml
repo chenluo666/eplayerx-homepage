@@ -26,8 +26,8 @@ enabled = true
 # database_id below. Apply schema: `wrangler d1 migrations apply eplayerx-blocks`.
 [[d1_databases]]
 binding = "DB"
-database_name = "blocks"
-database_id = "e8ba17f1-93da-4903-8ee5-53e2ace245cf"
+database_name = "eplayerx-homepage"
+database_id = "7a464001-94aa-4eca-85b5-5a7a9beb16a9"
 migrations_dir = "migrations"
 
 # Existing crawler/snapshot bucket (served publicly via assets.eplayerx.com).
