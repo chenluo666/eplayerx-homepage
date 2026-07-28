@@ -15,7 +15,6 @@ routes = [
 	{ pattern = "tmdb.chenluo.cyou/*", zone_name = "chenluo.cyou" },
 	{ pattern = "chenluo.cyou/blocks*", zone_name = "chenluo.cyou" }
 ]
-]
 
 [placement]
 mode = "smart"
