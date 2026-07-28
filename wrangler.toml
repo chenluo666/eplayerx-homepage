@@ -1,19 +1,18 @@
-#:schema node_modules/wrangler/config-schema.json
-
 name = "eplayerx-homepage"
 main = "src/worker.ts"
 compatibility_date = "2025-04-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Keep the default *.workers.dev address alive.
 workers_dev = true
 
-# 修改这里的路由配置
-# Public routes for this Worker.
-# 使用这种格式，不要加 custom_domain = true
+# 👇 【你的专属域名配置，已完美替换为 epx 前缀】
 routes = [
-	{ pattern = "api.chenluo.cyou/*", zone_name = "chenluo.cyou" },
-	{ pattern = "tmdb.chenluo.cyou/*", zone_name = "chenluo.cyou" },
-	{ pattern = "chenluo.cyou/blocks*", zone_name = "chenluo.cyou" }
+ # 拦截所有子域名 (完美覆盖 epx, tmdb, 以及未来你随便乱造的任何前缀)
+ { pattern = "*.chenluo.cyou/*", zone_name = "chenluo.cyou" },
+
+ # 拦截根域名 (为了兼容原代码里的 ikuu.eu.org/blocks* 路径)
+ { pattern = "chenluo.cyou/*", zone_name = "chenluo.cyou" },
 ]
 
 [placement]
@@ -22,12 +21,19 @@ mode = "smart"
 [observability]
 enabled = true
 
+# 👇 【新增】环境变量配置（用于解决之前的 API 密码报错问题）
+[vars]
+# 🔴 请将下方的 "你的密码填在这里" 替换为你实际想要的管理员密码
+BLOCKS_ADMIN_PASSWORD = "Cl6789423150"
+
+# D1 database configuration
 [[d1_databases]]
 binding = "DB"
-database_name = "eplayerx-homepage"
-database_id = "7a464001-94aa-4eca-85b5-5a7a9beb16a9"
+database_name = "blocks"
+database_id = "a9e6f51d-1f2f-45cf-a9ba-3578c2d8c133"
 migrations_dir = "migrations"
 
+# R2 bucket configuration
 [[r2_buckets]]
 binding = "ASSETS"
 bucket_name = "crawler"
