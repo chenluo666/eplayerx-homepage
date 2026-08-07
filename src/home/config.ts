@@ -20,7 +20,10 @@ type HomeTitleKey =
   | "home.tmdb_discover_languages"
   | "home.tmdb_discover_networks"
   | "home.tmdb_top_rated_movies"
-  | "home.tmdb_top_rated_tv_shows";
+  | "home.tmdb_top_rated_tv_shows"
+  | "home.weekly_korean_drama"
+  | "home.weekly_japanese_drama"
+  | "home.weekly_sea_drama";
 
 type SourceQueryValue = string | number | boolean;
 
@@ -72,7 +75,7 @@ export interface DefaultHomeConfig {
   blocks: HomeBlock[];
 }
 
-export const HOME_CONFIG_VERSION = 1;
+export const HOME_CONFIG_VERSION = 2;
 
 const TITLE_TRANSLATIONS: Record<HomeTitleKey, Record<Locale, string>> = {
   "home.continue_watching": {
@@ -281,7 +284,7 @@ function createDefaultBlockTemplates(
   timezone: string
 ): HomeBlockTemplate[] {
   return [
-    {
+{
       id: "tmdb-popular-tv-shows",
       mediaType: "tv",
       titleKey: "home.tmdb_popular_tv_shows",
@@ -538,7 +541,23 @@ function createDefaultBlockTemplates(
         },
       },
     },
-  ];
+    {
+      id: "weekly_guoman_collection",
+      mediaType: "tv",
+      titleKey: "home.weekly_guoman",
+      preset: "collection-list",
+      groupMode: "weekday",
+      children: [
+        { id: "weekly_guoman_collection-1", label: "周一", weekday: 1, title: "周一", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-1.json", itemEnvelope: "data" } },
+        { id: "weekly_guoman_collection-2", label: "周二", weekday: 2, title: "周二", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-2.json", itemEnvelope: "data" } },
+        { id: "weekly_guoman_collection-3", label: "周三", weekday: 3, title: "周三", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-3.json", itemEnvelope: "data" } },
+        { id: "weekly_guoman_collection-4", label: "周四", weekday: 4, title: "周四", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-4.json", itemEnvelope: "data" } },
+        { id: "weekly_guoman_collection-5", label: "周五", weekday: 5, title: "周五", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-5.json", itemEnvelope: "data" } },
+        { id: "weekly_guoman_collection-6", label: "周六", weekday: 6, title: "周六", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-6.json", itemEnvelope: "data" } },
+        { id: "weekly_guoman_collection-7", label: "周日", weekday: 7, title: "周日", mediaType: "tv", preset: "thumb-list", source: { path: "https://epx.chenluo.cyou/blocks/public/weekly_guoman_collection-7.json", itemEnvelope: "data" } }
+      ]
+    }
+];
 }
 
 function resolveBlockTitle(
@@ -568,5 +587,8 @@ export function createDefaultHomeConfig(
     blocks: createDefaultBlockTemplates(options.language, options.timezone).map(
       (block) => resolveBlockTitle(block, options.language)
     ),
-  };
+  "home.weekly_korean_drama": { en: "Weekly Korean Dramas", zh: "韩剧追剧周更表", "zh-Hant": "韓劇追劇周更表", ja: "韓国ドラマ週間更新", es: "Dramas Coreanos Semanales", ar: "دراما كورية أ週間" },
+  "home.weekly_japanese_drama": { en: "Weekly Japanese Dramas", zh: "日剧追剧周更表", "zh-Hant": "日劇追劇周更表", ja: "日本ドラマ週間更新", es: "Dramas Japoneses Semanales", ar: "دراما يابانية أ週間" },
+  "home.weekly_sea_drama": { en: "Weekly Southeast Asian Dramas", zh: "东南亚剧周更表", "zh-Hant": "東南亞劇周更表", ja: "東南アジアドラマ週間更新", es: "Dramas del Sudeste Asiático Semanales", ar: "دراما جنوب شرق آسيا" },
+};
 }
